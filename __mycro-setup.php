@@ -37,7 +37,7 @@ if(isset($_POST['databaseType'])){
     if(!empty($diff)){
         __pr($diff);
         ## sample: 
-        exec('/PHP-Extensions/initRDS.sh');
+        ## exec('/PHP-Extensions/initRDS.sh');
     }
     
     file_put_contents(MYCRO_CONFIG, json_encode($_POST, JSON_PRETTY_PRINT));

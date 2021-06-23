@@ -38,6 +38,8 @@ if(isset($_POST['databaseType'])){
         __pr($diff);
         ## sample: 
         ## exec('/mycro/install_rds.sh');
+        header("Location: https://console.aws.amazon.com/cloudformation/home?region=#/stacks/new?stackName=add_RDS&templateURL=https://quick-launch-ecomm.s3.us-east-2.amazonaws.com/RDStemplate.yaml");
+        
     }
     
     file_put_contents(MYCRO_CONFIG, json_encode($_POST, JSON_PRETTY_PRINT));

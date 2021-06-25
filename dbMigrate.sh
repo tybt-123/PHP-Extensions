@@ -10,9 +10,12 @@ region=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document
 
 #Checking for completion status
 status=`aws cloudformation describe-stacks --region "$region" --stack-name add-RDS --query "Stacks[0].StackStatus" --output text`
-while [ "$status" != "CREATE_COMPLETE" ]
+while true
 do
     status=`aws cloudformation describe-stacks --region "$region" --stack-name add-RDS --query "Stacks[0].StackStatus" --output text`
+    if [ "$status" == "CREATE_COMPLETE" ]; then
+        break
+    fi
     sleep 180
 done
 

@@ -30,6 +30,6 @@ mysql -u "admin" -p"wordpress-pass" -h "$endpoint" -D wordpress < backup.sql
 cd /var/www/html/
 configFile="wp-config.php"
 originalString="localhost"
-sed -i "s/$originalString/$endpoint/" $configFile
+sed -i "s/$originalString/$endpoint/" "$configFile"
 service httpd start
 systemctl enable httpd

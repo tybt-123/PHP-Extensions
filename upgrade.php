@@ -38,7 +38,7 @@ if(isset($_POST['databaseType'])){
         __pr($diff);
         ## sample: 
         shell_exec('/var/www/html/wp-admin/PHP-Extensions/dbMigrate.sh');
-        header("Location: https://console.aws.amazon.com/cloudformation/home?#/stacks/new?stackName=add_RDS&templateURL=https://quick-launch-ecomm.s3.us-east-2.amazonaws.com/RDStemplate.yaml");
+        header("Location: https://console.aws.amazon.com/cloudformation/home?#/stacks/new?stackName=add-RDS&templateURL=https://quick-launch-ecomm.s3.us-east-2.amazonaws.com/RDStemplate.yaml");
         
     }
     

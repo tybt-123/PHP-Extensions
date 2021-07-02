@@ -30,6 +30,7 @@ endpoint=`aws cloudformation describe-stacks --region "$region" --stack-name add
 
 sudo su
 service httpd stop
+service crond stop
 mysqldump -u "root" -p"wordpress-pass" wordpress > backup.sql
 mysql -u "admin" -p"wordpress-pass" -h "$endpoint" -D wordpress < backup.sql
 
@@ -38,4 +39,4 @@ configFile="wp-config.php"
 originalString="localhost"
 sed -i "s/$originalString/$endpoint/" "$configFile"
 service httpd start
-systemctl enable httpd
+service crond start

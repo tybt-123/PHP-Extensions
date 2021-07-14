@@ -26,7 +26,7 @@ do
 done
 
 #Getting the instance endpoint
-endpoint=`aws cloudformation describe-stacks --region "$region" --stack-name add-RDS --query "Stacks[0].Outputs[?OutputKey=='DBEndpoint'].OutputValue" --output text`
+endpoint="`aws cloudformation describe-stacks --region "$region" --stack-name add-RDS --query "Stacks[0].Outputs[?OutputKey=='DBEndpoint'].OutputValue" --output text`"
 
 sudo su
 service httpd stop
@@ -35,8 +35,6 @@ mysqldump -u "root" -p"wordpress-pass" wordpress > backup.sql
 mysql -u "admin" -p"wordpress-pass" -h "$endpoint" -D wordpress < backup.sql
 
 cd /var/www/html/
-configFile="wp-config.php"
-originalString="localhost"
-sed -i "s/$originalString/$endpoint/" "$configFile"
+sed -i "s/localhost/$endpoint/" wp-config.php
 service httpd start
 service crond start

@@ -8,6 +8,8 @@ sudo yum install mysql -y
 #Getting region that EC2 instance is residing in
 region=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r`
 
+sleep 1800
+
 #Checking for completion status, 
 status=`aws cloudformation describe-stacks --region "$region" --stack-name add-RDS --query "Stacks[0].StackStatus" --output text`
 let num=0
